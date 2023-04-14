@@ -10,9 +10,9 @@ import java.awt.event.ActionEvent;
 
 public class Aplikace extends JFrame {
 
-    private JTextField husyField;
+    private JSpinner husyField;
     private JLabel husyLabel;
-    private JTextField kraliciField;
+    private JSpinner kraliciField;
     private JLabel kraliciLabel;
     private JButton vypocitatButton;
 
@@ -44,21 +44,38 @@ public class Aplikace extends JFrame {
         setLayout(new MigLayout("wrap 2", "[right]rel[50:120:150,grow,fill]"));
         setMinimumSize(new Dimension(250, 200));
 
-        husyField = new JTextField();
+        /*husyField = new JTextField();
         husyLabel = new JLabel("Husy");
         husyLabel.setDisplayedMnemonic('H');
         husyLabel.setLabelFor(husyField);
         husyField.setHorizontalAlignment(JTextField.TRAILING);
         husyField.setEditable(true);
         add(husyLabel);
+        add(husyField);*/
+
+        husyField = new JSpinner();
+        husyLabel = new JLabel("Husy");
+        husyLabel.setDisplayedMnemonic('H');
+        husyLabel.setLabelFor(husyField);
+        husyField.setBounds(200, 100, 100, 50);
+        add(husyLabel);
         add(husyField);
 
-        kraliciField = new JTextField();
+
+        /*kraliciField = new JTextField();
         kraliciLabel = new JLabel("Králíci");
         kraliciLabel.setDisplayedMnemonic('K');
         kraliciLabel.setLabelFor(kraliciField);
         kraliciField.setHorizontalAlignment(JTextField.TRAILING);
         kraliciField.setEditable(true);
+        add(kraliciLabel);
+        add(kraliciField);*/
+
+        kraliciField = new JSpinner();
+        kraliciLabel = new JLabel("Králíci");
+        kraliciLabel.setDisplayedMnemonic('K');
+        kraliciLabel.setLabelFor(kraliciField);
+        kraliciField.setBounds(200, 200, 100, 50);
         add(kraliciLabel);
         add(kraliciField);
 
@@ -103,8 +120,10 @@ public class Aplikace extends JFrame {
 
 
     private void handleVypocitat(ActionEvent actionEvent) {
-        int pocetHus = Integer.parseInt(husyField.getText());
-        int pocetKraliku = Integer.parseInt(kraliciField.getText());
+        //int pocetHus = Integer.parseInt(husyField.getText());
+        int pocetHus = (int) husyField.getValue();
+        //int pocetKraliku = Integer.parseInt(kraliciField.getText());
+        int pocetKraliku = (int) kraliciField.getValue();
 
         int pocetHlav = pocetHus + pocetKraliku;
         int pocetNohou = pocetHus * 2 + pocetKraliku * 4;
