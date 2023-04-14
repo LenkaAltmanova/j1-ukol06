@@ -103,20 +103,13 @@ public class Aplikace extends JFrame {
 
 
     private void handleVypocitat(ActionEvent actionEvent) {
-        String husy = husyField.getText();
-        int pocetHus = Integer.parseInt(husy);
-        System.out.println("počet hus je " + pocetHus);
-
-        String kralici = kraliciField.getText();
-        int pocetKraliku = Integer.parseInt(kralici);
-        System.out.println("počet králíků je " + pocetKraliku);
+        int pocetHus = Integer.parseInt(husyField.getText());
+        int pocetKraliku = Integer.parseInt(kraliciField.getText());
 
         int pocetHlav = pocetHus + pocetKraliku;
-        System.out.println("počet hlav je " + pocetHlav);
-        pocetHlavField.setText(String.valueOf(pocetHlav));
-
         int pocetNohou = pocetHus * 2 + pocetKraliku * 4;
-        System.out.println("počet nohou je " + pocetNohou);
+
+        pocetHlavField.setText(String.valueOf(pocetHlav));
         pocetNohouField.setText(String.valueOf(pocetNohou));
 
 
