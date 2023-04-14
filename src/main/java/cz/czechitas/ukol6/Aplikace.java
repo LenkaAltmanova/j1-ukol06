@@ -14,6 +14,7 @@ public class Aplikace extends JFrame {
     private JLabel husyLabel;
     private JTextField kraliciField;
     private JLabel kraliciLabel;
+    private JButton vypocitatButton;
 
     private JTextField pocetHlavField;
     private JLabel pocetHlavLabel;
@@ -21,7 +22,7 @@ public class Aplikace extends JFrame {
     private JTextField pocetNohouField;
     private JLabel pocetNohouLabel;
 
-    private JButton vypocitatButton;
+
 
 
     public static void main(String[] args) {
@@ -63,12 +64,13 @@ public class Aplikace extends JFrame {
         add(kraliciLabel);
         add(kraliciField);
 
+
         pocetHlavField = new JTextField();
         pocetHlavLabel = new JLabel("Počet hlav");
         pocetHlavLabel.setDisplayedMnemonic('P');
         pocetHlavLabel.setLabelFor(pocetHlavField);
         pocetHlavField.setHorizontalAlignment(JTextField.TRAILING);
-        pocetHlavField.setEnabled(false);
+        pocetHlavField.setEditable(false);
         add(pocetHlavLabel);
         add(pocetHlavField);
 
@@ -77,7 +79,7 @@ public class Aplikace extends JFrame {
         pocetNohouLabel.setDisplayedMnemonic('N');
         pocetNohouLabel.setLabelFor(pocetNohouField);
         pocetNohouField.setHorizontalAlignment(JTextField.TRAILING);
-        pocetNohouField.setEnabled(false);
+        pocetNohouField.setEditable(false);
         add(pocetNohouLabel);
         add(pocetNohouField);
         add(createButtonBar(), "span");
@@ -103,8 +105,6 @@ public class Aplikace extends JFrame {
 
 
     private void handleVypocitat(ActionEvent actionEvent) {
-        //if (actionEvent.getSource() == vypocitatButton) {
-
         String husy = husyField.getText();
         int pocetHus = Integer.parseInt(husy);
         System.out.println("počet hus je " + pocetHus);
@@ -113,8 +113,10 @@ public class Aplikace extends JFrame {
         System.out.println("počet králíků je " + pocetKraliku);
         int pocetHlav = pocetHus + pocetKraliku;
         System.out.println("počet hlav je " + pocetHlav);
+        pocetHlavField.setText(String.valueOf(pocetHlav));
         int pocetNohou = pocetHus * 2 + pocetKraliku * 4;
         System.out.println("počet nohou je " + pocetNohou);
+        pocetNohouField.setText(String.valueOf(pocetNohou));
 
 
     }
