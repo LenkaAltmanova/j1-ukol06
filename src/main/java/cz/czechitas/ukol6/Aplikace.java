@@ -7,6 +7,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import javax.swing.SpinnerNumberModel;
 
 public class Aplikace extends JFrame {
 
@@ -42,19 +43,17 @@ public class Aplikace extends JFrame {
         setLayout(new MigLayout("wrap 2", "[right]rel[50:120:150,grow,fill]"));
         setMinimumSize(new Dimension(250, 200));
 
-        husySpinner = new JSpinner();
+        husySpinner = new JSpinner(new SpinnerNumberModel(0, 0, 10000000, 1));
         husyLabel = new JLabel("Husy");
         husyLabel.setDisplayedMnemonic('H');
         husyLabel.setLabelFor(husySpinner);
         add(husyLabel);
         add(husySpinner);
 
-        kraliciSpinner = new JSpinner();
+        kraliciSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 10000000, 1));
         kraliciLabel = new JLabel("Králíci");
         kraliciLabel.setDisplayedMnemonic('K');
         kraliciLabel.setLabelFor(kraliciSpinner);
-        SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 1000000, 1);
-        model.getValue();
         add(kraliciLabel);
         add(kraliciSpinner);
 
