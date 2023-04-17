@@ -10,15 +10,13 @@ import java.awt.event.ActionEvent;
 
 public class Aplikace extends JFrame {
 
-    private JSpinner husyField;
+    private JSpinner husySpinner;
     private JLabel husyLabel;
-    private JSpinner kraliciField;
+    private JSpinner kraliciSpinner;
     private JLabel kraliciLabel;
     private JButton vypocitatButton;
-
     private JTextField pocetHlavField;
     private JLabel pocetHlavLabel;
-
     private JTextField pocetNohouField;
     private JLabel pocetNohouLabel;
 
@@ -44,41 +42,21 @@ public class Aplikace extends JFrame {
         setLayout(new MigLayout("wrap 2", "[right]rel[50:120:150,grow,fill]"));
         setMinimumSize(new Dimension(250, 200));
 
-        /*husyField = new JTextField();
+        husySpinner = new JSpinner();
         husyLabel = new JLabel("Husy");
         husyLabel.setDisplayedMnemonic('H');
-        husyLabel.setLabelFor(husyField);
-        husyField.setHorizontalAlignment(JTextField.TRAILING);
-        husyField.setEditable(true);
+        husyLabel.setLabelFor(husySpinner);
         add(husyLabel);
-        add(husyField);*/
+        add(husySpinner);
 
-        husyField = new JSpinner();
-        husyLabel = new JLabel("Husy");
-        husyLabel.setDisplayedMnemonic('H');
-        husyLabel.setLabelFor(husyField);
-        husyField.setBounds(200, 100, 100, 50);
-        add(husyLabel);
-        add(husyField);
-
-
-        /*kraliciField = new JTextField();
+        kraliciSpinner = new JSpinner();
         kraliciLabel = new JLabel("Králíci");
         kraliciLabel.setDisplayedMnemonic('K');
-        kraliciLabel.setLabelFor(kraliciField);
-        kraliciField.setHorizontalAlignment(JTextField.TRAILING);
-        kraliciField.setEditable(true);
+        kraliciLabel.setLabelFor(kraliciSpinner);
+        SpinnerNumberModel model = new SpinnerNumberModel(0, 0, 1000000, 1);
+        model.getValue();
         add(kraliciLabel);
-        add(kraliciField);*/
-
-        kraliciField = new JSpinner();
-        kraliciLabel = new JLabel("Králíci");
-        kraliciLabel.setDisplayedMnemonic('K');
-        kraliciLabel.setLabelFor(kraliciField);
-        kraliciField.setBounds(200, 200, 100, 50);
-        add(kraliciLabel);
-        add(kraliciField);
-
+        add(kraliciSpinner);
 
         pocetHlavField = new JTextField();
         pocetHlavLabel = new JLabel("Počet hlav");
@@ -99,19 +77,17 @@ public class Aplikace extends JFrame {
         add(pocetNohouField);
         add(createButtonBar(), "span");
 
-
         pack();
 
         getRootPane().setDefaultButton(vypocitatButton);
 
         vypocitatButton.addActionListener(this::handleVypocitat);
         return createButtonBar();
-
     }
 
     private JPanel createButtonBar() {
         vypocitatButton = new JButton("Vypočítat");
-        vypocitatButton.setMnemonic('U');
+        vypocitatButton.setMnemonic('V');
 
         JPanel buttonBar = new JPanel(new MigLayout(null, "[left, grow]"));
         buttonBar.add(vypocitatButton);
@@ -120,17 +96,13 @@ public class Aplikace extends JFrame {
 
 
     private void handleVypocitat(ActionEvent actionEvent) {
-        //int pocetHus = Integer.parseInt(husyField.getText());
-        int pocetHus = (int) husyField.getValue();
-        //int pocetKraliku = Integer.parseInt(kraliciField.getText());
-        int pocetKraliku = (int) kraliciField.getValue();
+        int pocetHus = (int) husySpinner.getValue();
+        int pocetKraliku = (int) kraliciSpinner.getValue();
 
         int pocetHlav = pocetHus + pocetKraliku;
         int pocetNohou = pocetHus * 2 + pocetKraliku * 4;
 
         pocetHlavField.setText(String.valueOf(pocetHlav));
         pocetNohouField.setText(String.valueOf(pocetNohou));
-
-
     }
 }
